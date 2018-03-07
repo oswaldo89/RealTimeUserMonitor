@@ -1,0 +1,20 @@
+{
+  "name": "chat",
+  "version": "0.0.1",
+  "description": "none",
+  "main": "server.js",
+  "author": "Oswaldo Gomez",
+  "license": "ISC",
+  "private": true,
+  "scripts": {
+    "start": "nodemon -e js,ejs,html -w .env -w . -w public -w views -w routes -w models server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "ioredis": "^1.15.1",
+    "jsonwebtoken": "^7.0.0",
+    "node-env-file": "^0.1.8",
+    "redis": "^2.8.0",
+    "socket.io": "^1.7.4"
+  }
+}
