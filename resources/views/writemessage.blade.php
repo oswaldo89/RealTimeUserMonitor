@@ -15,10 +15,16 @@
 
     socket.on('onlineUsers', function (data) {
         console.log("Usuarios conectados :: ", data);
-        config.data.datasets[0].data[0] = data;
+        config.data.datasets[0].data[0] = data.length;
         if(myLineChart !== undefined)
             myLineChart.update();
     });
+    
+    socket.on('disconnectedUser', function (data) {
+        console.log("Usuarios desconectado :: ", data);
+    });
+    
+    
 
     $(document).on('click','#btnSendMessage',function (){
         var url = '{{ URL::to('/sendmessage') }}';
@@ -33,7 +39,7 @@
                 backgroundColor: ["#2ecc71","#9b59b6","#e67e22","#1abc9c" ],
                 label: 'Dataset 1'
             }],
-            labels: [ "Guestbook", "Qbits Android", "Qbits IOS", "Comida Rapida" ]
+            labels: [ "Aplicacion 1", "Aplicacion 2", "Aplicacion 3", "Aplicacion 4" ]
         },
         options: {
             responsive: true
@@ -54,7 +60,7 @@
 <input type="text" id="txtMessage"/>
 <button id="btnSendMessage">Enviar</button>
 
-<div id="canvas-holder" style="width:100%">
+<div id="canvas-holder" style="width:80%">
     <canvas id="chart-area" />
 </div>
 
